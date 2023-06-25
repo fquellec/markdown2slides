@@ -1,57 +1,8 @@
-# base
+# Markdown2Slides
 
-## Project setup
+A simple markdown editor to make slides with Marp, Vue3 and Vuetify.
 
-```
-# yarn
-yarn
+[DEMO here](https://fquellec.github.io/markdown2slides/)
 
-# npm
-npm install
+**WIP**
 
-# pnpm
-pnpm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-# yarn
-yarn dev
-
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-```
-
-### Compiles and minifies for production
-
-```
-# yarn
-yarn build
-
-# npm
-npm run build
-
-# pnpm
-pnpm build
-```
-
-### Lints and fixes files
-
-```
-# yarn
-yarn lint
-
-# npm
-npm run lint
-
-# pnpm
-pnpm lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://vitejs.dev/config/).
