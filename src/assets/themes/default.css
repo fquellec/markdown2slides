@@ -84,9 +84,6 @@ h4,
 h5,
 h6 {
   margin: 0.5em 0 0;
-  strong {
-    font-weight: inherit;
-  }
 }
 
 video::-webkit-media-controls {
@@ -110,11 +107,9 @@ strong {
   color: var(--tertiary-color);
 }
 
-ul,
-ol {
-  > li > p {
-    text-align: left;
-  }
+ul > li > p,
+ol > li > p {
+  text-align: left;
 }
 
 table {

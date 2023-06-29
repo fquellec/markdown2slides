@@ -7,7 +7,8 @@ import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ command, mode, ssrBuild }) =>  { return {
+  base:  mode === 'production' ? "/markdown2slides/" : "",
   plugins: [
     vue({ 
       template: { transformAssetUrls }
@@ -26,6 +27,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
     extensions: [
+      '.css',
       '.js',
       '.json',
       '.jsx',
@@ -38,4 +40,4 @@ export default defineConfig({
   server: {
     port: 3000,
   }
-})
+}})

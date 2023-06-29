@@ -25,7 +25,7 @@
 <script>
 import Marpit from '@marp-team/marpit'
 import theme from "@/assets/themes/default.css?inline"
-import bespoke from '@/assets/bespoke/bespoke'
+import bespoke from '@/assets/bespoke/bespoke.js'
 
 export default {
   props: {
@@ -123,7 +123,7 @@ export default {
   /*background-color: #FAFAFA;*/
 }
 
-.content ::v-deep svg {
+.content :deep(svg) {
   margin-top: 5px;
   margin-bottom: 15px;
   box-shadow: 0 5px 10px rgb(0 0 0 / 25%)
