@@ -16,7 +16,9 @@
       </v-btn-toggle>
       
     </div>
-    <div id="content" class="content" v-html="html"></div>
+    <div id="content" class="content" v-html="`<style>${css}</style>${html}`">
+    </div>
+    
   </v-card>
 </template>
 
@@ -33,14 +35,15 @@ export default {
     }
   },
   data() {
-    //const marpit = new Marpit()
-    //marpit.themeSet.set('default', theme)
-
     return {
-      // marpit,
       html: '',
       css: ''
     };
+  },
+  computed: {
+    dynamicStyles() {
+      return this.parseCssString(this.css);
+    }
   },
   watch: {
     markdown(newMarkdown) {
@@ -48,17 +51,20 @@ export default {
     }
   },
   mounted(){
-    this.renderMarkdown(this.markdown)
+      this.renderMarkdown(this.markdown)
   },
   methods: {
     renderMarkdown(markdown) {
-      const marpit = new Marpit({
+       const marpit = new Marpit({
         inlineSVG: true,
-        html: true
+        html: true,
+        breaks: true,
+        //container: new Element('div', { class: 'marpit', id: ':$p' }),
       })
       marpit.themeSet.default = marpit.themeSet.add(theme)
       const { html, css } = marpit.render(markdown)
-      this.html = `<style>${css}</style>${html}`
+      this.css = css
+      this.html = html
     },
     download() {
       const htmlBespoke = `
@@ -74,7 +80,7 @@ export default {
           </head>
           <body>
           ${bespoke.html}
-          ${this.html.replace('class="marpit"', 'id=":$p" class="marpit"')}
+          ${this.html,join('\n')}
           ${bespoke.js}
           </body>
         </html>
@@ -111,9 +117,16 @@ export default {
 }
 
 .content {
+  padding: 0 10px 10px 10px;
   width: 100%; 
   height: 100%;
-  background-color: #FAFAFA;
+  /*background-color: #FAFAFA;*/
+}
+
+.content ::v-deep svg {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  box-shadow: 0 5px 10px rgb(0 0 0 / 25%)
 }
 
 </style>

@@ -22,7 +22,17 @@ export default {
   },
   data() {
     return {
-      markdown: '# Your Title'
+      markdown: `
+# Your Title
+
+--- 
+
+dddd
+
+--- 
+
+dddd
+`
     }
   },
   watch: {
