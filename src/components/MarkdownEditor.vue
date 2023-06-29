@@ -60,6 +60,11 @@ export default {
       toggleStyle: null
     }
   },
+  watch: {
+    toggleStyle(newValue){
+      console.log(newValue)
+    }
+  },
   emits: ['update:markdown'],
   methods: {
     setCursorPosition(position) {
@@ -77,7 +82,8 @@ export default {
       const newText = `${this.markdown.slice(0, startPosition)}**${this.markdown.slice(startPosition, endPosition)}**${this.markdown.slice(endPosition)}`;
       this.$emit('update:markdown', newText)
       this.$refs.textarea.selectionStart = startPosition + 2;
-      this.$refs.textarea.selectionEnd = endPosition + 2;
+      this.$refs.textarea.selectionEnd = endPosition + 4;
+      this.$refs.textarea.focus();
     },
     setItalic() {
     
